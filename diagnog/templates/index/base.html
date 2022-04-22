@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diagnog</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/jquery.rateyo.min.css' %}" />
+    <link rel="icon" href="{% static 'assets/favicon.png' %}" />
+    <script
+      src="https://kit.fontawesome.com/afd9ba88ef.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/flickity@2/dist/flickity.min.css"
+    />
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+  </head>
+
+  <body>
+    <div class="info-lang">
+      <div class="info">
+        <a href="mailto:info@email.com">
+          <i class="fa-regular fa-envelope"></i>
+          <span>info@gmail.com</span>
+        </a>
+        <a href="#">
+          <i class="bi bi-geo-alt"></i>
+          <span>15/A, Nest Tower, NYC</span>
+        </a>
+      </div>
+      <div class="lang">
+        <ul class="socio">
+          <li>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          </li>
+          <li>
+            <a href="#"
+              ><i style="font-weight: 900" class="fa-brands fa-instagram"></i
+            ></a>
+          </li>
+          <li>
+            <a href="#"
+              ><i style="font-weight: 900" class="fa-brands fa-whatsapp"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="navbar">
+      <a class="logo" href="index.html">
+        DIAGNOG
+        <!-- <img src="assets/logo.png" alt=""> -->
+      </a>
+      <ul class="ico">
+        <li>
+          <a href="#" class="srch">
+            <i class="bi glass bi-search"></i>
+            <i class="bi close bi-x-lg"></i>
+          </a>
+          <div class="search">
+            <form onsubmit="event.preventDefault()">
+              <input
+                type="text"
+                name="search"
+                id="search"
+                placeholder="Search Here"
+              />
+              <button type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </form>
+          </div>
+        </li>
+        <li>
+          <a class="user" href="#"><i class="fa-regular fa-user"></i></a>
+          <ul class="prsn">
+            <li><a href="signin.html">Sign In</a></li>
+            <li><a href="signup.html">Register</a></li>
+            <li><a href="#">My Account</a></li>
+            <li><a href="#">Wishlist</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="btnCart1" onclick="showCart()"
+            ><i class="bi bi-cart"></i
+          ></a>
+        </li>
+      </ul>
+    </div>
+
+    <nav class="navbar1">
+      <div class="mrenu">
+        <div id="item" onclick="cat()">
+          <i style="margin-right: 5px" class="fa-solid fa-bars"></i> CATEGORIES
+          <i style="margin-left: 40px" class="fa-solid fa-caret-down"></i>
+        </div>
+        <div id="submenu">
+          <a href="#">Link 1<i class="fa-solid fa-plus"></i></a>
+          <a href="#">Link 2<i class="fa-solid fa-plus"></i></a>
+          <a href="#">Link 3<i class="fa-solid fa-plus"></i></a>
+          <a href="#">Link 1<i class="fa-solid fa-plus"></i></a>
+          <a href="#">Link 2<i class="fa-solid fa-plus"></i></a>
+          <a href="#">Link 3<i class="fa-solid fa-plus"></i></a>
+        </div>
+      </div>
+      <div class="cover">
+        <ul class="navlnks example">
+          <div class="company">
+            <a class="logo" href="index.html">
+              <img src="{% static 'assets/logo.' %}png" alt="" />
+            </a>
+            <span class="closenav" onclick="closeNavbar()"
+              ><i class="fa-solid fa-xmark"></i
+            ></span>
+          </div>
+          <li class="link">
+            <a href="#">Home<i class="bi bi-plus"></i></a>
+            <ul>
+              <li><a href="#">Home Page 1</a></li>
+              <li><a href="#">Home Page 2</a></li>
+              <li><a href="#">Home Page 3</a></li>
+            </ul>
+          </li>
+          <li class="link">
+            <a href="#">About<i class="bi bi-plus"></i></a>
+            <ul>
+              <li><a href="#">About</a></li>
+              <li><a href="#">About Service</a></li>
+              <li><a href="#">Detail</a></li>
+              <li><a href="#">Gallery</a></li>
+              <li><a href="#">Gallery 2</a></li>
+              <li><a href="#">Gallery Detail</a></li>
+              <li><a href="#">Team Detail</a></li>
+              <li><a href="#">Google Map Location</a></li>
+            </ul>
+          </li>
+          <li class="link">
+            <a href="#">Shop<i class="bi bi-plus"></i></a>
+            <ul>
+              <li><a href="#">Shop</a></li>
+              <li><a href="#">Shop Grid</a></li>
+              <li><a href="#">Shop Left Sidebar</a></li>
+              <li><a href="#">Shop Right Sidebar</a></li>
+              <li><a href="#">Shop Detail</a></li>
+              <li class="submnu">
+                <a href="#"
+                  >More Details<i
+                    style="margin-left: 5px"
+                    class="fa-solid fa-caret-right"
+                  ></i
+                ></a>
+                <ul class="dropMenu">
+                  <li><a href="#">More Detail 1</a></li>
+                  <li><a href="#">More Detail 2</a></li>
+                  <li><a href="#">More Detail 3</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li class="link">
+            <a href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <div class="toggle" onclick="toggle()" id="toggle">
+        <i class="fa-solid fa-bars menu"></i>
+        <i class="fa-solid fa-xmark cross"></i>
+      </div>
+      <div class="contact">
+        <a href="tel:+0000000000"
+          ><i class="bi bi-telephone"></i> <span>000-000-0000</span></a
+        >
+      </div>
+    </nav>
+
+    {% block body %} {% endblock %}
+
+    <footer>
+      <div class="fotcont">
+        <div class="intro text-white">
+          <a href="#" class="mb-3 ft">DIAGNOG</a>
+          <p class="mb-8">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
+            sequi? Hic vero corrupti
+          </p>
+          <p class="mb-3">
+            <i class="fa-solid fa-location-dot mr-3"></i>
+            <span>SP 21, Sector C, Chetan Vihar Colony, Aliganj</span>
+          </p>
+          <a href="#" class="hover mb-3"
+            ><i class="fa-solid fa-phone mr-3"></i> <span>+0123-456789</span></a
+          >
+          <a href="#" class="hover mb-3"
+            ><i class="fa-solid fa-envelope mr-3"></i>
+            <span>example@example.com</span></a
+          >
+          <ul class="mt-2">
+            <li>
+              <a href="#" class="hover"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#" class="hover"><i class="fa-brands fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="#" class="hover"
+                ><i class="fa-brands fa-linkedin-in"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#" class="hover"><i class="fa-brands fa-youtube"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="column text-slate-200">
+          <h1 class="mb-6">Company</h1>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">All Products</a></li>
+            <li><a href="#">Location Map</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="column text-slate-200">
+          <h1 class="mb-6">Services</h1>
+          <ul>
+            <li><a href="#">Order Tracking</a></li>
+            <li><a href="#">Wish List</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">My Account</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Promotional Offers</a></li>
+          </ul>
+        </div>
+        <div class="column text-slate-200">
+          <h1 class="mb-6">Customer Care</h1>
+          <ul>
+            <li><a href="#">Order Tracking</a></li>
+            <li><a href="#">Wish List</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">My Account</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="newsletter text-slate-200">
+          <!-- <h1 class="mb-6">Newsletter</h1>
+          <p class="mb-5">
+            Subscribe to our weekly Newsletter and receive updates via email.
+          </p>
+          <form action="" class="mb-6">
+            <input type="text" name="mail" id="mail" placeholder="Email*" />
+            <button type="submit">
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </form> -->
+          <div class="paymnt">
+            <h1 class="mb-4">We Accept</h1>
+            <img src="{% static 'assets/payment-4.png' %}" alt="" />
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div class="copyright py-8 px-10">
+      <p>All Rights Reserved @ Company 2022</p>
+      <div class="tcp">
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Claim</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+
+    <script src="js/main.js "></script>
+    <script src="js/jquery.rateyo.min.js"></script>
+    <script>
+      $(".rateYo").rateYo({
+        rating: 3.6,
+        starWidth: "15px",
+        numStars: 5,
+        minValue: 0,
+        maxValue: 10,
+        normalFill: "gray",
+        ratedFill: "orange",
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,817 @@
+{% extends 'index/base.html' %} {% load static %} {% block body %}
+<div class="cart example">
+  <div class="innerc">
+    <h5>
+      Cart
+      <span class="btnCart2" onclick="closeCart()"
+        ><i class="fa-solid fa-xmark"></i
+      ></span>
+    </h5>
+    <div class="items example">
+      <div class="xl:w-full p-4 cardb">
+        <div class="inner-card border border-gray-200 py-2 px-6">
+          <img
+            src="https://media.istockphoto.com/vectors/hand-sanitizer-vector-id1215174618?b=1&k=20&m=1215174618&s=612x612&w=0&h=7-uKK1Am9NUp4-_nEsTbpr4qoL05F3f4TgXN7kUhtAU="
+            alt=""
+          />
+          <div class="content">
+            <a href="#">Antiseptic Spray</a>
+            <p>1*$10.00</p>
+          </div>
+        </div>
+      </div>
+      <div class="xl:w-full p-4 cardb">
+        <div class="inner-card border border-gray-200 py-2 px-6">
+          <img
+            src="https://media.istockphoto.com/vectors/hand-sanitizer-vector-id1215174618?b=1&k=20&m=1215174618&s=612x612&w=0&h=7-uKK1Am9NUp4-_nEsTbpr4qoL05F3f4TgXN7kUhtAU="
+            alt=""
+          />
+          <div class="content">
+            <a href="#">Antiseptic Spray</a>
+            <p>1*$10.00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h1>Subtotal <span>$310.00</span></h1>
+    <div class="btn">
+      <button type="submit" class="a">View Cart</button>
+      <button type="submit" class="b">Checkout</button>
+    </div>
+    <p>Free Shipping on All Orders Over $100!</p>
+  </div>
+</div>
+
+<section class="section-1">
+  <div class="banr lg:px-20 mb-20 flex items-center flex-col lg:flex-row">
+    <div class="img1 p-2">
+      <a href="#">
+        <img
+          src="https://images.pexels.com/photos/6074918/pexels-photo-6074918.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+          alt=""
+        />
+        <div class="text">
+          <h3>Up to 50% off today only!</h3>
+          <h2>Gold Standard pre workout</h2>
+          <p>starting at $60.99</p>
+          <button class="a">Shop Now</button>
+        </div>
+      </a>
+    </div>
+    <div class="img2 flex flex-col">
+      <a href="#">
+        <img
+          src="https://images.pexels.com/photos/4492099/pexels-photo-4492099.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+          alt=""
+        />
+        <div class="text">
+          <h3>Up to 50% off today only!</h3>
+          <h2>Gold Standard pre workout</h2>
+          <p>starting at $60.99</p>
+          <button class="a">Shop Now</button>
+        </div>
+      </a>
+      <a href="#">
+        <img
+          src="https://images.pexels.com/photos/5149757/pexels-photo-5149757.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+          alt=""
+        />
+        <div class="text">
+          <h3>Up to 50% off today only!</h3>
+          <h2>Gold Standard pre workout</h2>
+          <p>starting at $60.99</p>
+          <button class="a">Shop Now</button>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="carousel-1" data-flickity='{ "wrapAround": true}'>
+    <div class="carousel-cell-1">
+      <a href="#">
+        <i class="fa-solid fa-syringe"></i>
+        <p>Service 1</p>
+      </a>
+    </div>
+    <div class="carousel-cell-1">
+      <a href="#">
+        <i class="fa-solid fa-pump-medical"></i>
+        <p>Service 2</p>
+      </a>
+    </div>
+    <div class="carousel-cell-1">
+      <a href="#">
+        <i class="fa-solid fa-book-medical"></i>
+        <p>Service 3</p>
+      </a>
+    </div>
+    <div class="carousel-cell-1">
+      <a href="#">
+        <i class="fa-solid fa-briefcase-medical"></i>
+        <p>Service 4</p>
+      </a>
+    </div>
+    <div class="carousel-cell-1">
+      <a href="#">
+        <i class="fa-solid fa-house-medical"></i>
+        <p>Service 5</p>
+      </a>
+    </div>
+    <div class="carousel-cell-1">
+      <a href="#">
+        <i class="fa-solid fa-kit-medical"></i>
+        <p>Service 6</p>
+      </a>
+    </div>
+    <div class="carousel-cell-1">
+      <a href="#">
+        <i class="fa-solid fa-mask-face"></i>
+        <p>Service 7</p>
+      </a>
+    </div>
+    <div class="carousel-cell-1">
+      <a href="#">
+        <i class="fa-solid fa-mask-ventilator"></i>
+        <p>Service 8</p>
+      </a>
+    </div>
+    <div class="carousel-cell-1">
+      <a href="#">
+        <i class="fa-solid fa-x-ray"></i>
+        <p>Service 9</p>
+      </a>
+    </div>
+    <div class="carousel-cell-1">
+      <a href="#">
+        <i class="fa-solid fa-hospital"></i>
+        <p>Service 10</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section-2">
+  <h1 class="hed">Featured Products</h1>
+  <div class="prod">
+    <div class="col">
+      <a href="#">
+        <div class="w-64 card-1">
+          <img class="w-full" src="{% static 'assets/1.png' %}" />
+          <div class="pricing py-5 px-5">
+            <a href="#" class="s-link text-gray-700 font-bold"
+              >Antiseptic Spray</a
+            >
+            <p class="text-sm text-gray-700 font-semibold mt-1">
+              $32.00
+              <span class="text-red-600 line-through ml-2">$46.00</span>
+            </p>
+            <div class="view">
+              <a href="#"><i class="fa-regular fa-eye"></i></a>
+              <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+              <a href="#"><i class="fa-regular fa-heart"></i></a>
+            </div>
+          </div>
+          <span class="new">NEW</span>
+        </div>
+      </a>
+      <a href="#">
+        <div class="w-64 card-1">
+          <img class="w-full" src="{% static 'assets/2.png' %}" />
+          <div class="pricing py-5 px-5">
+            <a href="#" class="s-link text-gray-700 font-bold"
+              >Digital Stethoscope</a
+            >
+            <p class="text-sm text-gray-700 font-semibold mt-1">
+              $25.00
+              <span class="text-red-600 line-through ml-2">$35.00</span>
+            </p>
+            <div class="view">
+              <a href="#"><i class="fa-regular fa-eye"></i></a>
+              <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+              <a href="#"><i class="fa-regular fa-heart"></i></a>
+            </div>
+          </div>
+          <span class="new">NEW</span>
+        </div>
+      </a>
+      <a href="#">
+        <div class="w-64 card-1">
+          <img class="w-full" src="{% static 'assets/3.png' %}" />
+          <div class="pricing py-5 px-5">
+            <a href="#" class="s-link text-gray-700 font-bold"
+              >Cosmetic Containers</a
+            >
+            <p class="text-sm text-gray-700 font-semibold mt-1">
+              $75.00<span class="text-red-600 line-through ml-2">$92.00</span>
+            </p>
+            <div class="view">
+              <a href="#"><i class="fa-regular fa-eye"></i></a>
+              <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+              <a href="#"><i class="fa-regular fa-heart"></i></a>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a href="#">
+        <div class="w-64 card-1">
+          <img class="w-full" src="{% static 'assets/4.png' %}" />
+          <div class="pricing py-5 px-5">
+            <a href="#" class="s-link text-gray-700 font-bold"
+              >Cosmetic Containers</a
+            >
+            <p class="text-sm text-gray-700 font-semibold mt-1">
+              $75.00<span class="text-red-600 line-through ml-2">$92.00</span>
+            </p>
+            <div class="view">
+              <a href="#"><i class="fa-regular fa-eye"></i></a>
+              <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+              <a href="#"><i class="fa-regular fa-heart"></i></a>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a href="#">
+        <div class="w-64 card-1">
+          <img class="w-full" src="{% static 'assets/5.png' %}" />
+          <div class="pricing py-5 px-5">
+            <a href="#" class="s-link text-gray-700 font-bold"
+              >Cosmetic Containers</a
+            >
+            <p class="text-sm text-gray-700 font-semibold mt-1">
+              $75.00<span class="text-red-600 line-through ml-2">$92.00</span>
+            </p>
+            <div class="view">
+              <a href="#"><i class="fa-regular fa-eye"></i></a>
+              <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+              <a href="#"><i class="fa-regular fa-heart"></i></a>
+            </div>
+          </div>
+          <span class="new">NEW</span>
+        </div>
+      </a>
+      <a href="#">
+        <div class="w-64 card-1">
+          <img class="w-full" src="{% static 'assets/6.png' %}" />
+          <div class="pricing py-5 px-5">
+            <a href="#" class="s-link text-gray-700 font-bold"
+              >Cosmetic Containers</a
+            >
+            <p class="text-sm text-gray-700 font-semibold mt-1">
+              $75.00<span class="text-red-600 line-through ml-2">$92.00</span>
+            </p>
+            <div class="view">
+              <a href="#"><i class="fa-regular fa-eye"></i></a>
+              <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+              <a href="#"><i class="fa-regular fa-heart"></i></a>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a href="#">
+        <div class="w-64 card-1">
+          <img class="w-full" src="{% static 'assets/1.png' %}" />
+          <div class="pricing py-5 px-5">
+            <a href="#" class="s-link text-gray-700 font-bold"
+              >Antiseptic Spray</a
+            >
+            <p class="text-sm text-gray-700 font-semibold mt-1">
+              $32.00
+              <span class="text-red-600 line-through ml-2">$46.00</span>
+            </p>
+            <div class="view">
+              <a href="#"><i class="fa-regular fa-eye"></i></a>
+              <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+              <a href="#"><i class="fa-regular fa-heart"></i></a>
+            </div>
+          </div>
+          <span class="new">NEW</span>
+        </div>
+      </a>
+      <a href="#">
+        <div class="w-64 card-1">
+          <img class="w-full" src="{% static 'assets/2.png' %}" />
+          <div class="pricing py-5 px-5">
+            <a href="#" class="s-link text-gray-700 font-bold"
+              >Digital Stethoscope</a
+            >
+            <p class="text-sm text-gray-700 font-semibold mt-1">
+              $25.00
+              <span class="text-red-600 line-through ml-2">$35.00</span>
+            </p>
+            <div class="view">
+              <a href="#"><i class="fa-regular fa-eye"></i></a>
+              <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+              <a href="#"><i class="fa-regular fa-heart"></i></a>
+            </div>
+          </div>
+          <span class="new">NEW</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section-5">
+  <h1 class="hed">Trending Products</h1>
+  <div class="tp">
+    <a href="#">
+      <div
+        class="w-64 card hover:shadow-xl duration-300 ease-in-out transition-all border border-slate-200"
+      >
+        <img class="w-full" src="{% static 'assets/2.png' %}" />
+        <div class="pricing py-2 px-5">
+          <a href="#" class="s-link text-gray-700 font-bold"
+            >Digital Stethoscope</a
+          >
+          <p class="text-sm text-green-600 font-semibold mt-1">
+            $25.00
+            <span class="text-green-400 line-through ml-2">$35.00</span>
+          </p>
+          <div class="view">
+            <a href="#"><i class="fa-regular fa-eye"></i></a>
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="#"><i class="fa-regular fa-heart"></i></a>
+          </div>
+          <span class="new">NEW</span>
+        </div>
+      </div>
+    </a>
+    <a href="#">
+      <div
+        class="w-64 card hover:shadow-xl duration-300 ease-in-out transition-all border border-slate-200"
+      >
+        <img class="w-full" src="{% static 'assets/3.png' %}" />
+        <div class="pricing py-2 px-5">
+          <a href="#" class="s-link text-gray-700 font-bold"
+            >Digital Stethoscope</a
+          >
+          <p class="text-sm text-green-600 font-semibold mt-1">
+            $25.00
+            <span class="text-green-400 line-through ml-2">$35.00</span>
+          </p>
+          <div class="view">
+            <a href="#"><i class="fa-regular fa-eye"></i></a>
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="#"><i class="fa-regular fa-heart"></i></a>
+          </div>
+          <span class="new">NEW</span>
+        </div>
+      </div>
+    </a>
+    <a href="#">
+      <div
+        class="w-64 card hover:shadow-xl duration-300 ease-in-out transition-all border border-slate-200"
+      >
+        <img class="w-full" src="{% static 'assets/5.png' %}" />
+        <div class="pricing py-2 px-5">
+          <a href="#" class="s-link text-gray-700 font-bold"
+            >Digital Stethoscope</a
+          >
+          <p class="text-sm text-green-600 font-semibold mt-1">
+            $25.00
+            <span class="text-green-400 line-through ml-2">$35.00</span>
+          </p>
+          <div class="view">
+            <a href="#"><i class="fa-regular fa-eye"></i></a>
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="#"><i class="fa-regular fa-heart"></i></a>
+          </div>
+          <span class="new">NEW</span>
+        </div>
+      </div>
+    </a>
+    <a href="#">
+      <div
+        class="w-64 card hover:shadow-xl duration-300 ease-in-out transition-all border border-slate-200"
+      >
+        <img class="w-full" src="{% static 'assets/4.png' %}" />
+        <div class="pricing py-2 px-5">
+          <a href="#" class="s-link text-gray-700 font-bold"
+            >Digital Stethoscope</a
+          >
+          <p class="text-sm text-green-600 font-semibold mt-1">
+            $25.00
+            <span class="text-green-400 line-through ml-2">$35.00</span>
+          </p>
+          <div class="view">
+            <a href="#"><i class="fa-regular fa-eye"></i></a>
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="#"><i class="fa-regular fa-heart"></i></a>
+          </div>
+          <span class="new">NEW</span>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="temp">
+    <a href="#">
+      <div class="h-card">
+        <img
+          src="https://images.pexels.com/photos/48604/pexels-photo-48604.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt=""
+        />
+        <div class="scon">
+          <h1><strong>35% off in all products</strong></h1>
+          <a href="#">Shop Now</a>
+        </div>
+      </div>
+    </a>
+    <a href="#">
+      <div class="h-card">
+        <img
+          src="https://images.pexels.com/photos/1001897/pexels-photo-1001897.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt=""
+        />
+        <div class="scon">
+          <h1><strong>28% off in all products</strong></h1>
+          <a href="#">Shop Now</a>
+        </div>
+      </div>
+    </a>
+    <a href="#">
+      <div class="h-card">
+        <img
+          src="https://images.pexels.com/photos/3786166/pexels-photo-3786166.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt=""
+        />
+        <div class="scon">
+          <h1><strong>50% off in all products</strong></h1>
+          <a href="#">Shop Now</a>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="section-2 pt-12">
+  <h1 class="hed">Featured Products</h1>
+  <div class="prod">
+    <div class="col">
+      <a href="#">
+        <div
+          class="w-96 border-2 hover:shadow-xl transition-all duration-300 ease-in-out h-40 p-2 card-2 flex items-center"
+        >
+          <img class="w-32" src="{% static 'assets/1.png' %}" />
+          <div class="pricing py-5 px-5">
+            <div class="rateYo mt-3 mb-2"></div>
+            <a href="#" class="s-link text-gray-700 font-bold"
+              >Antiseptic Spray</a
+            >
+            <p class="text-sm text-gray-700 font-semibold mt-1">
+              $32.00 <span class="line-through ml-2">$46.00</span>
+            </p>
+          </div>
+        </div>
+      </a>
+      <a href="#">
+        <div
+          class="w-96 border-2 hover:shadow-xl transition-all duration-300 ease-in-out h-40 p-2 card-2 flex items-center"
+        >
+          <img class="w-32" src="{% static 'assets/2.png' %}" />
+          <div class="pricing py-5 px-5">
+            <div class="rateYo mt-3 mb-2"></div>
+            <a href="#" class="s-link text-gray-700 font-bold"
+              >Antiseptic Spray</a
+            >
+            <p class="text-sm text-gray-700 font-semibold mt-1">
+              $32.00 <span class="line-through ml-2">$46.00</span>
+            </p>
+          </div>
+        </div>
+      </a>
+      <a href="#">
+        <div
+          class="w-96 border-2 hover:shadow-xl transition-all duration-300 ease-in-out h-40 p-2 card-2 flex items-center"
+        >
+          <img class="w-32" src="{% static 'assets/3.png' %}" />
+          <div class="pricing py-5 px-5">
+            <div class="rateYo mt-3 mb-2"></div>
+            <a href="#" class="s-link text-gray-700 font-bold"
+              >Antiseptic Spray</a
+            >
+            <p class="text-sm text-gray-700 font-semibold mt-1">
+              $32.00 <span class="line-through ml-2">$46.00</span>
+            </p>
+          </div>
+        </div>
+      </a>
+      <a href="#">
+        <div
+          class="w-96 border-2 hover:shadow-xl transition-all duration-300 ease-in-out h-40 p-2 card-2 flex items-center"
+        >
+          <img class="w-32" src="{% static 'assets/4.png' %}" />
+          <div class="pricing py-5 px-5">
+            <div class="rateYo mt-3 mb-2"></div>
+            <a href="#" class="s-link text-gray-700 font-bold"
+              >Antiseptic Spray</a
+            >
+            <p class="text-sm text-gray-700 font-semibold mt-1">
+              $32.00 <span class="line-through ml-2">$46.00</span>
+            </p>
+          </div>
+        </div>
+      </a>
+      <a href="#">
+        <div
+          class="w-96 border-2 hover:shadow-xl transition-all duration-300 ease-in-out h-40 p-2 card-2 flex items-center"
+        >
+          <img class="w-32" src="{% static 'assets/5.png' %}" />
+          <div class="pricing py-5 px-5">
+            <div class="rateYo mt-3 mb-2"></div>
+            <a href="#" class="s-link text-gray-700 font-bold"
+              >Antiseptic Spray</a
+            >
+            <p class="text-sm text-gray-700 font-semibold mt-1">
+              $32.00 <span class="line-through ml-2">$46.00</span>
+            </p>
+          </div>
+        </div>
+      </a>
+      <a href="#">
+        <div
+          class="w-96 border-2 hover:shadow-xl transition-all duration-300 ease-in-out h-40 p-2 card-2 flex items-center"
+        >
+          <img class="w-32" src="{% static 'assets/6.png' %}" />
+          <div class="pricing py-5 px-5">
+            <div class="rateYo mt-3 mb-2"></div>
+            <a href="#" class="s-link text-gray-700 font-bold"
+              >Antiseptic Spray</a
+            >
+            <p class="text-sm text-gray-700 font-semibold mt-1">
+              $32.00 <span class="line-through ml-2">$46.00</span>
+            </p>
+          </div>
+        </div>
+      </a>
+      <a href="#">
+        <div
+          class="w-96 border-2 hover:shadow-xl transition-all duration-300 ease-in-out h-40 p-2 card-2 flex items-center"
+        >
+          <img class="w-32" src="{% static 'assets/1.png' %}" />
+          <div class="pricing py-5 px-5">
+            <div class="rateYo mt-3 mb-2"></div>
+            <a href="#" class="s-link text-gray-700 font-bold"
+              >Antiseptic Spray</a
+            >
+            <p class="text-sm text-gray-700 font-semibold mt-1">
+              $32.00 <span class="line-through ml-2">$46.00</span>
+            </p>
+          </div>
+        </div>
+      </a>
+      <a href="#">
+        <div
+          class="w-96 border-2 hover:shadow-xl transition-all duration-300 ease-in-out h-40 p-2 card-2 flex items-center"
+        >
+          <img class="w-32" src="{% static 'assets/2.png' %}" />
+          <div class="pricing py-5 px-5">
+            <div class="rateYo mt-3 mb-2"></div>
+            <a href="#" class="s-link text-gray-700 font-bold"
+              >Antiseptic Spray</a
+            >
+            <p class="text-sm text-gray-700 font-semibold mt-1">
+              $32.00 <span class="line-through ml-2">$46.00</span>
+            </p>
+          </div>
+        </div>
+      </a>
+      <a href="#">
+        <div
+          class="w-96 border-2 hover:shadow-xl transition-all duration-300 ease-in-out h-40 p-2 card-2 flex items-center"
+        >
+          <img class="w-32" src="{% static 'assets/3.png' %}" />
+          <div class="pricing py-5 px-5">
+            <div class="rateYo mt-3 mb-2"></div>
+            <a href="#" class="s-link text-gray-700 font-bold"
+              >Antiseptic Spray</a
+            >
+            <p class="text-sm text-gray-700 font-semibold mt-1">
+              $32.00 <span class="line-through ml-2">$46.00</span>
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section-3">
+  <h1 class="hed">Best Selling Items</h1>
+  <div class="lp py-5">
+    <a href="#">
+      <div
+        class="w-64 card hover:shadow-xl duration-300 ease-in-out transition-all border border-slate-200"
+      >
+        <img class="w-full" src="{% static 'assets/15.png' %}" />
+        <div class="rateYo px-5 mt-3"></div>
+        <div class="pricing py-2 px-5">
+          <a href="#" class="s-link text-gray-700 font-bold"
+            >Digital Stethoscope</a
+          >
+          <p class="text-sm text-green-600 font-semibold mt-1">
+            $25.00
+            <span class="text-green-400 line-through ml-2">$35.00</span>
+          </p>
+          <div class="view">
+            <a href="#"><i class="fa-regular fa-eye"></i></a>
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="#"><i class="fa-regular fa-heart"></i></a>
+          </div>
+          <span class="new">NEW</span>
+        </div>
+      </div>
+    </a>
+    <a href="#">
+      <div
+        class="w-64 card hover:shadow-xl duration-300 ease-in-out transition-all border border-slate-200"
+      >
+        <img class="w-full" src="{% static 'assets/16.png' %}" />
+        <div class="rateYo px-5 mt-3"></div>
+        <div class="pricing py-2 px-5">
+          <a href="#" class="s-link text-gray-700 font-bold"
+            >Digital Stethoscope</a
+          >
+          <p class="text-sm text-green-600 font-semibold mt-1">
+            $25.00
+            <span class="text-green-400 line-through ml-2">$35.00</span>
+          </p>
+          <div class="view">
+            <a href="#"><i class="fa-regular fa-eye"></i></a>
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="#"><i class="fa-regular fa-heart"></i></a>
+          </div>
+          <span class="new">NEW</span>
+        </div>
+      </div>
+    </a>
+    <a href="#">
+      <div
+        class="w-64 card hover:shadow-xl duration-300 ease-in-out transition-all border border-slate-200"
+      >
+        <img class="w-full" src="{% static 'assets/17.png' %}" />
+        <div class="rateYo px-5 mt-3"></div>
+        <div class="pricing py-2 px-5">
+          <a href="#" class="s-link text-gray-700 font-bold"
+            >Digital Stethoscope</a
+          >
+          <p class="text-sm text-green-600 font-semibold mt-1">
+            $25.00
+            <span class="text-green-400 line-through ml-2">$35.00</span>
+          </p>
+          <div class="view">
+            <a href="#"><i class="fa-regular fa-eye"></i></a>
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="#"><i class="fa-regular fa-heart"></i></a>
+          </div>
+          <span class="new">NEW</span>
+        </div>
+      </div>
+    </a>
+    <a href="#">
+      <div
+        class="w-64 card hover:shadow-xl duration-300 ease-in-out transition-all border border-slate-200"
+      >
+        <img class="w-full" src="{% static 'assets/18.png' %}" />
+        <div class="rateYo px-5 mt-3"></div>
+        <div class="pricing py-2 px-5">
+          <a href="#" class="s-link text-gray-700 font-bold"
+            >Digital Stethoscope</a
+          >
+          <p class="text-sm text-green-600 font-semibold mt-1">
+            $25.00
+            <span class="text-green-400 line-through ml-2">$35.00</span>
+          </p>
+          <div class="view">
+            <a href="#"><i class="fa-regular fa-eye"></i></a>
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="#"><i class="fa-regular fa-heart"></i></a>
+          </div>
+          <span class="new">NEW</span>
+        </div>
+      </div>
+    </a>
+    <a href="#">
+      <div
+        class="w-64 card hover:shadow-xl duration-300 ease-in-out transition-all border border-slate-200"
+      >
+        <img class="w-full" src="{% static 'assets/19.png' %}" />
+        <div class="rateYo px-5 mt-3"></div>
+        <div class="pricing py-2 px-5">
+          <a href="#" class="s-link text-gray-700 font-bold"
+            >Digital Stethoscope</a
+          >
+          <p class="text-sm text-green-600 font-semibold mt-1">
+            $25.00
+            <span class="text-green-400 line-through ml-2">$35.00</span>
+          </p>
+          <div class="view">
+            <a href="#"><i class="fa-regular fa-eye"></i></a>
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="#"><i class="fa-regular fa-heart"></i></a>
+          </div>
+          <span class="new">NEW</span>
+        </div>
+      </div>
+    </a>
+    <a href="#">
+      <div
+        class="w-64 card hover:shadow-xl duration-300 ease-in-out transition-all border border-slate-200"
+      >
+        <img class="w-full" src="{% static 'assets/20.png' %}" />
+        <div class="rateYo px-5 mt-3"></div>
+        <div class="pricing py-2 px-5">
+          <a href="#" class="s-link text-gray-700 font-bold"
+            >Digital Stethoscope</a
+          >
+          <p class="text-sm text-green-600 font-semibold mt-1">
+            $25.00
+            <span class="text-green-400 line-through ml-2">$35.00</span>
+          </p>
+          <div class="view">
+            <a href="#"><i class="fa-regular fa-eye"></i></a>
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="#"><i class="fa-regular fa-heart"></i></a>
+          </div>
+          <span class="new">NEW</span>
+        </div>
+      </div>
+    </a>
+    <a href="#">
+      <div
+        class="w-64 card hover:shadow-xl duration-300 ease-in-out transition-all border border-slate-200"
+      >
+        <img class="w-full" src="{% static 'assets/21.png' %}" />
+        <div class="rateYo px-5 mt-3"></div>
+        <div class="pricing py-2 px-5">
+          <a href="#" class="s-link text-gray-700 font-bold"
+            >Digital Stethoscope</a
+          >
+          <p class="text-sm text-green-600 font-semibold mt-1">
+            $25.00
+            <span class="text-green-400 line-through ml-2">$35.00</span>
+          </p>
+          <div class="view">
+            <a href="#"><i class="fa-regular fa-eye"></i></a>
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="#"><i class="fa-regular fa-heart"></i></a>
+          </div>
+          <span class="new">NEW</span>
+        </div>
+      </div>
+    </a>
+    <a href="#">
+      <div
+        class="w-64 card hover:shadow-xl duration-300 ease-in-out transition-all border border-slate-200"
+      >
+        <img class="w-full" src="{% static 'assets/22.png' %}" />
+        <div class="rateYo px-5 mt-3"></div>
+        <div class="pricing py-2 px-5">
+          <a href="#" class="s-link text-gray-700 font-bold"
+            >Digital Stethoscope</a
+          >
+          <p class="text-sm text-green-600 font-semibold mt-1">
+            $25.00
+            <span class="text-green-400 line-through ml-2">$35.00</span>
+          </p>
+          <div class="view">
+            <a href="#"><i class="fa-regular fa-eye"></i></a>
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="#"><i class="fa-regular fa-heart"></i></a>
+          </div>
+          <span class="new">NEW</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="section-4">
+  <div class="secimg">
+    <img
+      src="{% static 'assets/e92795d5c4277a8c63499e055f9a56bb.slider-hero-img.webp' %}"
+      alt=""
+    />
+  </div>
+  <div class="seccont">
+    <p class="text-green-700 font-bold mb-5">N95 Facial Covering Mask</p>
+    <h1 class="hd font-semibold mb-5">
+      Grade A Safety Masks For Sale. Haurry Up!
+    </h1>
+    <p class="text-zinc-600">
+      Over 39,000 people work for us in more than 70 countries all over the This
+      breadth of global coverage, combined with specialist services
+    </p>
+    <div class="lists text-zinc-600 mt-5">
+      <ul class="mr-7">
+        <li class="mt-3">Activated Carbon</li>
+        <li class="mt-3">6 Layer Filteration</li>
+      </ul>
+      <ul>
+        <li class="mt-3">Breathing Valve</li>
+        <li class="mt-3">Rewashes & Reusable</li>
+      </ul>
+    </div>
+    <a href="#" class="a">VIEW PRODUCTS</a>
+  </div>
+</section>
+{% endblock %}
