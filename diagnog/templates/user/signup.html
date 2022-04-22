@@ -7,7 +7,8 @@
     <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
       <h1 class="mb-8 text-3xl text-center">Sign up</h1>
 
-      <form action="" onsubmit="return validation()">
+      <form action="{% url 'signUp' %}" method="post">
+        {% csrf_token %}
         <div class="form-elem">
           <input
             type="text"
@@ -33,7 +34,7 @@
           <input
             type="tel"
             onkeypress="return val()"
-            name="number"
+            name="phone"
             class="inp block w-full p-3 rounded mb-4"
             id="num"
             maxlength="10"
