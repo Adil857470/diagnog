@@ -62,11 +62,8 @@ def signUp(request):
                     mail_subject, message, 'youremail', [to_email])
                 msg.attach_alternative(message, "text/html")
                 msg.send()
-                print('------IF')
             else:
-                print('------ELSE')
                 return render(request, 'user/signup.html', {"message": "Password not matched."})
-            print('------AFTER-ELSE')
             return render(request, 'user/signin.html')
         else:
             return render(request, 'user/signup.html', {"message": "User already exist."})

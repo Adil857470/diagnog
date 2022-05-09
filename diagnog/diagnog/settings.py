@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user',
     'product',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,12 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'hireup.contact@gmail.com'
 EMAIL_HOST_PASSWORD = 'Ankit@98'
+
+# s3 settings
+
+AWS_S3_REGION_NAME = 'us-east-1'
+AWS_STORAGE_BUCKET_NAME = 'diagnog-media'
+AWS_QUERYSTRING_AUTH = False
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = 'AKIA2AFN5JU3RUUUIP57'
+AWS_SECRET_ACCESS_KEY = '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'
