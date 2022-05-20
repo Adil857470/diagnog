@@ -1,0 +1,11 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+product/__pycache__/
+diagnog/__pycache__/
+user/__pycache__/
+env
+.vscode/
+.vscode/
