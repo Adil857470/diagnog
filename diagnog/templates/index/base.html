@@ -32,9 +32,9 @@
   <body>
     <div class="info-lang">
       <div class="info">
-        <a href="mailto:info@email.com">
+        <a href="mailto:mydiagnog@gmail.com">
           <i class="fa-regular fa-envelope"></i>
-          <span>info@gmail.com</span>
+          <span>mydiagnog@gmail.com</span>
         </a>
         <a href="#">
           <i class="bi bi-geo-alt"></i>
@@ -64,7 +64,7 @@
     </div>
 
     <div class="navbar">
-      <a class="logo" href="index.html">
+      <a class="logo" href="/">
         DIAGNOG
         <!-- <img src="assets/logo.png" alt=""> -->
       </a>
@@ -91,10 +91,10 @@
         <li>
           <a class="user" href="#"><i class="fa-regular fa-user"></i></a>
           <ul class="prsn">
-            <li><a href="signin.html">Sign In</a></li>
-            <li><a href="signup.html">Register</a></li>
-            <li><a href="#">My Account</a></li>
-            <li><a href="#">Wishlist</a></li>
+            <li><a href="{% url 'signIn' %}">Sign In</a></li>
+            <li><a href="{% url 'signUp' %}">Register</a></li>
+            <li><a href="/profile">My Account</a></li>
+            <li><a href="/logout">Logout</a></li>
           </ul>
         </li>
         <li>
@@ -131,48 +131,17 @@
             ></span>
           </div>
           <li class="link">
-            <a href="#">Home<i class="bi bi-plus"></i></a>
-            <ul>
-              <li><a href="#">Home Page 1</a></li>
-              <li><a href="#">Home Page 2</a></li>
-              <li><a href="#">Home Page 3</a></li>
-            </ul>
+            <a href="#">Home</a>
+            
           </li>
           <li class="link">
-            <a href="#">About<i class="bi bi-plus"></i></a>
-            <ul>
-              <li><a href="#">About</a></li>
-              <li><a href="#">About Service</a></li>
-              <li><a href="#">Detail</a></li>
-              <li><a href="#">Gallery</a></li>
-              <li><a href="#">Gallery 2</a></li>
-              <li><a href="#">Gallery Detail</a></li>
-              <li><a href="#">Team Detail</a></li>
-              <li><a href="#">Google Map Location</a></li>
-            </ul>
+            <a href="#">About</a>
+          
+          
           </li>
           <li class="link">
-            <a href="#">Shop<i class="bi bi-plus"></i></a>
-            <ul>
-              <li><a href="#">Shop</a></li>
-              <li><a href="#">Shop Grid</a></li>
-              <li><a href="#">Shop Left Sidebar</a></li>
-              <li><a href="#">Shop Right Sidebar</a></li>
-              <li><a href="#">Shop Detail</a></li>
-              <li class="submnu">
-                <a href="#"
-                  >More Details<i
-                    style="margin-left: 5px"
-                    class="fa-solid fa-caret-right"
-                  ></i
-                ></a>
-                <ul class="dropMenu">
-                  <li><a href="#">More Detail 1</a></li>
-                  <li><a href="#">More Detail 2</a></li>
-                  <li><a href="#">More Detail 3</a></li>
-                </ul>
-              </li>
-            </ul>
+            <a href="#">Shop</a>
+           
           </li>
 
           <li class="link">
@@ -186,7 +155,7 @@
       </div>
       <div class="contact">
         <a href="tel:+0000000000"
-          ><i class="bi bi-telephone"></i> <span>000-000-0000</span></a
+          ><i class="bi bi-telephone"></i> <span>+91 7837008966</span></a
         >
       </div>
     </nav>
@@ -265,16 +234,7 @@
           </ul>
         </div>
         <div class="newsletter text-slate-200">
-          <!-- <h1 class="mb-6">Newsletter</h1>
-          <p class="mb-5">
-            Subscribe to our weekly Newsletter and receive updates via email.
-          </p>
-          <form action="" class="mb-6">
-            <input type="text" name="mail" id="mail" placeholder="Email*" />
-            <button type="submit">
-              <i class="fa-solid fa-paper-plane"></i>
-            </button>
-          </form> -->
+        
           <div class="paymnt">
             <h1 class="mb-4">We Accept</h1>
             <img src="{% static 'assets/payment-4.png' %}" alt="" />
@@ -291,8 +251,8 @@
       </div>
     </div>
 
-    <script src="js/main.js "></script>
-    <script src="js/jquery.rateyo.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/jquery.rateyo.min.js' %}"></script>
     <script>
       $(".rateYo").rateYo({
         rating: 3.6,
