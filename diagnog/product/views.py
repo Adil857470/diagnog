@@ -20,3 +20,8 @@ def index(request):
     best_selling_product = Orders.objects.all().annotate(
         total_quantity=Avg('quantity')).order_by('-total_quantity')[0:8]
     return render(request, 'index/index.html', {"data": data, "trending_products": trending_product, 'best_selling_products': best_selling_product})
+
+
+def productDescription(request, id=None):
+    data = Products.objects.filter(id=id).first()
+    return render(request, 'index/description.html', {"data": data})

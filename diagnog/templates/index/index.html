@@ -155,7 +155,7 @@
   <div class="prod">
     <div class="col">
       {% for info in data %}
-      <a href="#">
+      <a href="{% url 'productDescription' info.id %}">
         <div class="w-64 card-1">
           <img class="w-full" src="{{info.getImage}}" />
           <div class="pricing py-5 px-5">
@@ -166,11 +166,6 @@
                 >${{info.base_price}}</span
               >
             </p>
-            <div class="view">
-              <a href="#"><i class="fa-regular fa-eye"></i></a>
-              <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-              <a href="#"><i class="fa-regular fa-heart"></i></a>
-            </div>
           </div>
           {% if info.new %}
           <span class="new">NEW</span>
@@ -186,7 +181,7 @@
   <h1 class="hed">Trending Products</h1>
   <div class="tp">
     {% for trend in trending_products %}
-    <a href="#">
+    <a href="{% url 'productDescription' trend.id %}">
       <div
         class="w-64 card hover:shadow-xl duration-300 ease-in-out transition-all border border-slate-200"
       >
@@ -201,12 +196,6 @@
               >${{trend.name.base_price}}</span
             >
           </p>
-          <div class="view">
-            <a href="#"><i class="fa-regular fa-eye"></i></a>
-            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-            <a href="#"><i class="fa-regular fa-heart"></i></a>
-          </div>
-          <!-- <span class="new">NEW</span> -->
         </div>
       </div>
     </a>
@@ -218,7 +207,7 @@
   <h1 class="hed">Best Selling Items</h1>
   <div class="lp py-5">
     {% for best in best_selling_products %}
-    <a href="#">
+    <a href="{% url 'productDescription' best.id %}">
       <div
         class="w-64 card hover:shadow-xl duration-300 ease-in-out transition-all border border-slate-200"
       >
@@ -234,11 +223,7 @@
               >${{best.name.base_price}}</span
             >
           </p>
-          <div class="view">
-            <a href="#"><i class="fa-regular fa-eye"></i></a>
-            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-            <a href="#"><i class="fa-regular fa-heart"></i></a>
-          </div>
+
           <span class="new">NEW</span>
         </div>
       </div>
