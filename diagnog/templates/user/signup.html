@@ -1,62 +1,33 @@
 {% extends 'index/base.html' %} {% load static %} {% block body %}
 
 <div class="bg-grey-lighter ds min-h-screen flex flex-col">
-  <div
-    class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2"
-  >
+  <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
     <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
       <h1 class="mb-8 text-3xl text-center">Sign up</h1>
 
-      <form action="" onsubmit="return validation()">
+      <form action="" method="POST">
+        {% csrf_token %}
         <div class="form-elem">
-          <input
-            type="text"
-            name="f-name"
-            class="inp block w-full p-3 rounded mb-4"
-            id="fname"
-            placeholder="First Name"
-            autocomplete="hidden"
-            required
-          />
+          <input type="text" name="f-name" class="inp block w-full p-3 rounded mb-4" id="fname" placeholder="First Name"
+            autocomplete="hidden" required />
         </div>
         <div class="form-elem">
-          <input
-            type="text"
-            name="l-name"
-            class="inp block w-full p-3 rounded mb-4"
-            id="lname"
-            placeholder="Last Name"
-            autocomplete="hidden"
-          />
+          <input type="text" name="l-name" class="inp block w-full p-3 rounded mb-4" id="lname" placeholder="Last Name"
+            autocomplete="hidden" />
         </div>
 
         <div class="form-elem">
-          <input
-            type="email"
-            autocomplete="off"
-            name="email"
-            class="inp block w-full p-3 rounded mb-4"
-            id="mail"
-            placeholder="Email"
-            required
-          />
+          <input type="email" autocomplete="off" name="email" class="inp block w-full p-3 rounded mb-4" id="mail"
+            placeholder="Email" required />
         </div>
-        <input
-          type="password"
-          id="pass"
-          class="inp block w-full p-3 rounded mb-4"
-          name="password"
-          placeholder="Password"
-          required
-        />
-        <input
-          type="password"
-          id="pass"
-          class="inp block w-full p-3 rounded mb-4"
-          name="confirm_password"
-          placeholder="Confirm Password"
-          required
-        />
+        <input type="password" id="pass" class="inp block w-full p-3 rounded mb-4" name="password"
+          placeholder="Password" required />
+        <input type="password" id="pass" class="inp block w-full p-3 rounded mb-4" name="confirm_password"
+          placeholder="Confirm Password" required />
+        
+        {% if data %}
+        <p style="color: red;">{{data}}</p><br/>
+        {% endif %}
 
         <button type="submit" class="my-1 text-center w-full sub">
           CREATE ACCOUNT
@@ -64,17 +35,11 @@
       </form>
       <div class="text-center text-sm text-grey-dark mt-4">
         By signing up, you agree to the
-        <a
-          class="no-underline border-b border-grey-dark text-grey-dark"
-          href="#"
-        >
+        <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
           Terms of Service
         </a>
         and
-        <a
-          class="no-underline border-b border-grey-dark text-grey-dark"
-          href="#"
-        >
+        <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
           Privacy Policy
         </a>
       </div>
@@ -82,12 +47,8 @@
 
     <div class="text-grey-dark mt-6">
       Already have an account?
-      <a
-        class="no-underline border-b border-blue text-blue"
-        href="{% url 'signIn' %}"
-      >
-        Sign In </a
-      >.
+      <a class="no-underline border-b border-blue text-blue" href="{% url 'signIn' %}">
+        Sign In </a>.
     </div>
   </div>
 </div>

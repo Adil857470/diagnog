@@ -17,5 +17,5 @@ class customeUser (UserAdmin):
     inlines = (UserInLine,)
 
 
-admin.site.unregister(User)
-admin.site.register(User, customeUser)
+admin.site.register(Profile)
+
