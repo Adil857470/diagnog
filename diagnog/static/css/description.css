@@ -1,0 +1,13 @@
+button.a {
+    padding: 12px 22px;
+    background-color: #0A9A73;
+    border: 1px solid #0A9A73;
+    color: #fff;
+    transition: 0.3s ease-in-out all;
+}
+
+button.a:hover {
+    color: #000;
+    border: 1px solid #555;
+    box-shadow: inset 200px 0 1px #fff;
+}

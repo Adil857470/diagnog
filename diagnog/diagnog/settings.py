@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user',
     'product',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -128,10 +129,24 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+<<<<<<< HEAD
 # Email Setup
+=======
+
+>>>>>>> 9e9301488b6fce2ba61a073f28dead567e722944
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "contact.diagnog@gmail.com"
 EMAIL_HOST_PASSWORD = "diagnog@98"
+
+
+# s3 settings
+
+AWS_S3_REGION_NAME = 'us-east-1'
+AWS_STORAGE_BUCKET_NAME = 'diagnog-media'
+AWS_QUERYSTRING_AUTH = False
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = 'AKIA2AFN5JU3RUUUIP57'
+AWS_SECRET_ACCESS_KEY = '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'

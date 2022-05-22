@@ -1,0 +1,156 @@
+{% extends 'index/base.html' %} {% load static %} {% block body %}
+<html lang="en">
+  <body>
+    <section class="description">
+      <section class="text-gray-600 body-font overflow-hidden">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="lg:w-4/5 mx-auto flex flex-wrap-reverse">
+            <div
+              class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0 lg:mt-0 mt-12"
+            >
+              <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">
+                {{data.name}}
+              </h1>
+              <div class="flex mb-4">
+                <a class="flex-grow border-b-2 py-2 text-lg px-1"
+                  >Description</a
+                >
+              </div>
+              <p class="leading-relaxed mb-4">{{data.description}}</p>
+              <div class="flex border-t border-gray-200 py-2">
+                <span class="text-gray-500">Color</span>
+                <span class="ml-auto text-gray-900">Blue</span>
+              </div>
+              <div class="flex border-t border-gray-200 py-2">
+                <span class="text-gray-500">Size</span>
+                <span class="ml-auto text-gray-900">Medium</span>
+              </div>
+              <div class="flex border-t border-b mb-6 border-gray-200 py-2">
+                <span class="text-gray-500">Quantity</span>
+                <span class="ml-auto text-gray-900">4</span>
+              </div>
+              <div class="flex items-center">
+                <span class="title-font font-medium text-2xl text-gray-900"
+                  >$58.00</span
+                >
+                <button class="flex ml-auto items-center a">Add To Cart</button>
+                <button
+                  class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4"
+                >
+                  <i class="fa-solid fa-heart"></i>
+                </button>
+              </div>
+            </div>
+            <img
+              alt="ecommerce"
+              class="lg:w-1/2 w-full lg:h-auto h-auto object-cover object-center rounded"
+              src="assets/1.png"
+            />
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <footer>
+      <div class="fotcont">
+        <div class="intro text-white">
+          <a href="#" class="mb-3 ft">DIAGNOG</a>
+          <p class="mb-8">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
+            sequi? Hic vero corrupti
+          </p>
+          <p class="mb-3">
+            <i class="fa-solid fa-location-dot mr-3"></i>
+            <span>SP 21, Sector C, Chetan Vihar Colony, Aliganj</span>
+          </p>
+          <a href="#" class="hover mb-3"
+            ><i class="fa-solid fa-phone mr-3"></i> <span>+0123-456789</span></a
+          >
+          <a href="#" class="hover mb-3"
+            ><i class="fa-solid fa-envelope mr-3"></i>
+            <span>example@example.com</span></a
+          >
+          <ul class="mt-2">
+            <li>
+              <a href="#" class="hover"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#" class="hover"><i class="fa-brands fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="#" class="hover"
+                ><i class="fa-brands fa-linkedin-in"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#" class="hover"><i class="fa-brands fa-youtube"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="column text-slate-200">
+          <h1 class="mb-6">Company</h1>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">All Products</a></li>
+            <li><a href="#">Location Map</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="column text-slate-200">
+          <h1 class="mb-6">Services</h1>
+          <ul>
+            <li><a href="#">Order Tracking</a></li>
+            <li><a href="#">Wish List</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">My Account</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Promotional Offers</a></li>
+          </ul>
+        </div>
+        <div class="column text-slate-200">
+          <h1 class="mb-6">Customer Care</h1>
+          <ul>
+            <li><a href="#">Order Tracking</a></li>
+            <li><a href="#">Wish List</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">My Account</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="newsletter text-slate-200">
+          <h1 class="mb-6">Newsletter</h1>
+          <p class="mb-5">
+            Subscribe to our weekly Newsletter and receive updates via email.
+          </p>
+          <form action="" class="mb-6">
+            <input type="text" name="mail" id="mail" placeholder="Email*" />
+            <button type="submit">
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </form>
+          <div class="paymnt">
+            <h1 class="mb-4">We Accept</h1>
+            <img src="assets/payment-4.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div class="copyright py-8 px-10">
+      <p>All Rights Reserved @ Company 2022</p>
+      <div class="tcp">
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Claim</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+
+    <script src="js/main.js "></script>
+    <script src="js/jquery.rateyo.min.js"></script>
+  </body>
+</html>
+{% endblock %}
