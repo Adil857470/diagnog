@@ -10,6 +10,9 @@
             >
               <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">
                 {{data.name}}
+                <span name="product_id" id="product_id" style="display: none"
+                  >{{data.id}}</span
+                >
               </h1>
               <div class="flex mb-4">
                 <a class="flex-grow border-b-2 py-2 text-lg px-1"
@@ -17,14 +20,6 @@
                 >
               </div>
               <p class="leading-relaxed mb-4">{{data.description}}</p>
-              <!-- <div class="flex border-t border-gray-200 py-2">
-                <span class="text-gray-500">Color</span>
-                <span class="ml-auto text-gray-900">Blue</span>
-              </div>
-              <div class="flex border-t border-gray-200 py-2">
-                <span class="text-gray-500">Size</span>
-                <span class="ml-auto text-gray-900">Medium</span>
-              </div> -->
               <div class="flex mb-6 py-2">
                 <span class="text-gray-500">Quantity</span>
 
@@ -59,17 +54,19 @@
                     >{{data.discounted_price}}</span
                   >
                 </span>
-                <button class="flex ml-auto items-center a">Add To Cart</button>
                 <button
-                  class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4"
+                  class="flex ml-auto items-center a"
+                  onclick="add_to_cart()"
                 >
-                  <i class="fa-solid fa-heart"></i>
+                  Add To Cart
                 </button>
               </div>
             </div>
             <img
               alt="ecommerce"
               class="lg:w-1/2 w-full lg:h-auto h-auto object-cover object-center rounded"
+              name="product_img"
+              id="product_img"
               src="{{data.image}}"
             />
           </div>
@@ -82,6 +79,19 @@
   </body>
 </html>
 <script>
+  function add_to_cart() {
+    product_id = document.getElementById("product_id").innerText;
+    current_quantity = document.getElementById("quantity").innerText;
+    grand_total = document.getElementById("total_price").innerText;
+    product_img = document.getElementById("product_img").src;
+
+    setCookie("product_qty_" + product_id, current_quantity, 100);
+    setCookie("product_grand_value_" + product_id, grand_total, 100);
+    setCookie("product_img_" + product_id, product_img, 100);
+
+    let decodedCookie = decodeURIComponent(document.cookie);
+    console.log(decodedCookie);
+  }
   function add_product() {
     current_value = document.getElementById("quantity").innerText;
     current_total = document.getElementById("base_total_price").innerText;
@@ -94,13 +104,18 @@
 
     value = int_current_value + 1;
 
-    // ✅ Change (replace) the text of the span
     span.textContent = value;
     new_total = value * int_total_price;
     span_total_price.textContent = new_total;
+    document.cookie =
+      "pdI=7373;" + "expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/";
   }
 
   function minus_product() {
+    var user = getCookie("pdI");
+    console.log(user);
+    // let decodedCookie = decodeURIComponent(document.cookie);
+    // console.log(decodedCookie.);
     current_quantity = document.getElementById("quantity").innerText;
     current_total = document.getElementById("base_total_price").innerText;
     const span = document.getElementById("quantity");
