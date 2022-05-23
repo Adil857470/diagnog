@@ -9,4 +9,4 @@ user/__pycache__/
 env
 .vscode/
 .vscode/
-.pyc
+.*.pyc

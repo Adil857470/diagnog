@@ -24,4 +24,8 @@ def index(request):
 
 def productDescription(request, id=None):
     data = Products.objects.filter(id=id).first()
+    image = ProductImages.objects.filter(name=data.id).first()
+    image_url = 'https://diagnog-media.s3.us-east-1.amazonaws.com/' + \
+        str(image.image)
+    data.image = image_url
     return render(request, 'index/description.html', {"data": data})
