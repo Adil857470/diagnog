@@ -99,9 +99,9 @@
           </ul>
         </li>
         <li>
-          <a href="#" class="btnCart1" onclick="showCart()"
-            ><i class="bi bi-cart"></i
-          ></a>
+          <a href="#" class="btnCart1" onclick="showCart()" 
+            ><i class="bi bi-cart" style="font-size:26px;">&nbsp;<sup id='cart_count' style="padding:1px 5px;border-radius:50%;font-size:16px;background-color: #0a9a73;color:#fff;"></sup></i
+              ></a>
         </li>
       </ul>
     </div>
@@ -282,6 +282,15 @@
         }
         return "";
       }
+      function cart_load (){
+
+        //cart_data = document.getElementById('cart_count').innerText;
+        const cart_count_data = document.getElementById("cart_count");
+        cart_count_data.textContent = {{cart}};
+        
+        }
+        
+        window.onload= cart_load ();
     </script>
   </body>
 </html>

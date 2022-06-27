@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'user',
     'product',
     'storages',
+    'cart',
 ]
 
 MIDDLEWARE = [
@@ -66,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processor.cart_total_amount',
             ],
         },
     },
@@ -158,3 +160,7 @@ AWS_QUERYSTRING_AUTH = False
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_ACCESS_KEY_ID = 'AKIA2AFN5JU3RUUUIP57'
 AWS_SECRET_ACCESS_KEY = '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'
+
+
+
+CART_SESSION_ID = 'cart'

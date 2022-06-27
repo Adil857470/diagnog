@@ -10,7 +10,7 @@ class Products(models.Model):
     ''' Model for Products '''
     name = models.CharField(max_length=255, null=True)
     base_price = models.CharField(max_length=100, null=True)
-    discounted_price = models.CharField(max_length=100, null=True)
+    price = models.CharField(max_length=100, null=True)
     description = models.TextField(null=True, blank=True)
     created_at = models.DateField(auto_now_add=True)
 
@@ -49,3 +49,8 @@ class Orders(models.Model):
     cod = models.BooleanField(default=False)
     payment_method = models.CharField(
         max_length=150, blank=True, null=True, choices=methods)
+
+class Cart(models.Model):
+    product = models.ForeignKey(Products,on_delete=models.CASCADE)
+    added_by = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1,blank=False,null=False)

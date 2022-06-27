@@ -45,20 +45,20 @@
               <div class="flex items-center">
                 <span class="title-font font-medium text-2xl text-gray-900"
                   >₹<span name="total_price" id="total_price"
-                    >{{data.discounted_price}}</span
+                    >{{data.price}}</span
                   >
                   <span
                     style="display: none"
                     name="base_total_price"
                     id="base_total_price"
-                    >{{data.discounted_price}}</span
+                    >{{data.price}}</span
                   >
                 </span>
                 <button
                   class="flex ml-auto items-center a"
                   onclick="add_to_cart()"
                 >
-                  Add To Cart
+                <a style="color: inherit;">Add To Cart</a>
                 </button>
               </div>
             </div>
@@ -91,6 +91,11 @@
 
     let decodedCookie = decodeURIComponent(document.cookie);
     console.log(decodedCookie);
+    var url = "{% url 'cart_add' data.id 'qty' %}";
+    // Construct the full URL with "id"
+    let new_url = url.replace("qty", current_quantity);
+    console.log(new_url);
+    document.location.href = new_url ;
   }
   function add_product() {
     current_value = document.getElementById("quantity").innerText;

@@ -1,11 +1,8 @@
-asgiref==3.5.0
+asgiref==3.5.2
 Django==3.0.14
-django-ckeditor==6.3.2
-django-js-asset==2.0.0
+django-storages==1.12.3
 django-utils-six==2.0
-Pillow==9.1.0
+Pillow==9.1.1
 pytz==2022.1
 sqlparse==0.4.2
-psycopg2-binary==2.8.6
-django-storages
-boto3
+typing_extensions==4.2.0
