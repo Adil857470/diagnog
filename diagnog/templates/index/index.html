@@ -1,46 +1,7 @@
 {% extends 'index/base.html' %} {% load static %} {% block body %}
-<div class="cart example">
-  <div class="innerc">
-    <h5>
-      Cart
-      <span class="btnCart2" onclick="closeCart()"
-        ><i class="fa-solid fa-xmark"></i
-      ></span>
-    </h5>
-    <div class="items example">
-      <div class="xl:w-full p-4 cardb">
-        <div class="inner-card border border-gray-200 py-2 px-6">
-          <img
-            src="https://media.istockphoto.com/vectors/hand-sanitizer-vector-id1215174618?b=1&k=20&m=1215174618&s=612x612&w=0&h=7-uKK1Am9NUp4-_nEsTbpr4qoL05F3f4TgXN7kUhtAU="
-            alt=""
-          />
-          <div class="content">
-            <a href="#">Antiseptic Spray</a>
-            <p>1*₹10.00</p>
-          </div>
-        </div>
-      </div>
-      <div class="xl:w-full p-4 cardb">
-        <div class="inner-card border border-gray-200 py-2 px-6">
-          <img
-            src="https://media.istockphoto.com/vectors/hand-sanitizer-vector-id1215174618?b=1&k=20&m=1215174618&s=612x612&w=0&h=7-uKK1Am9NUp4-_nEsTbpr4qoL05F3f4TgXN7kUhtAU="
-            alt=""
-          />
-          <div class="content">
-            <a href="#">Antiseptic Spray</a>
-            <p>1*₹10.00</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <h1>Subtotal <span>₹310.00</span></h1>
-    <div class="btn">
-      <button type="submit" class="a">View Cart</button>
-      <button type="submit" class="b">Checkout</button>
-    </div>
-    <p>Free Shipping on All Orders Over ₹100!</p>
-  </div>
-</div>
+
+{% include 'index/cart.html' %}
+
 
 <section class="section-1">
   <div class="banr lg:px-20 mb-20 flex items-center flex-col lg:flex-row">

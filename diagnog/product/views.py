@@ -24,8 +24,13 @@ def index(request):
         total_quantity=Avg('quantity')).order_by('-total_quantity')[0:8]
     
     added_by = Profile.objects.filter(id=request.user.id).first()
-    cart = Cart.objects.filter(added_by=added_by).count()
-    return render(request, 'index/index.html', {"data": data, "trending_products": trending_product, 'best_selling_products': best_selling_product,'cart':cart})
+    if added_by:
+        cart = Cart.objects.filter(added_by=added_by)
+        cart_count = cart.count()
+    else:
+        cart_count = 0
+        cart = None
+    return render(request, 'index/index.html', {"data": data, "trending_products": trending_product, 'best_selling_products': best_selling_product,'cart_count':cart_count,"cart":cart})
 
 
 def productDescription(request, id=None):
@@ -35,8 +40,12 @@ def productDescription(request, id=None):
         str(image.image)
     data.image = image_url
     added_by = Profile.objects.filter(id=request.user.id).first()
-    cart = Cart.objects.filter(added_by=added_by).count()
-    return render(request, 'index/description.html', {"data": data,"cart":cart})
+    if added_by:
+        cart = Cart.objects.filter(added_by=added_by)
+        cart_count = cart.count()
+    else:
+        cart_count = 0
+    return render(request, 'index/description.html', {"data": data,"cart_count":cart_count})
 
 
 @login_required(login_url="/user/signin/")
