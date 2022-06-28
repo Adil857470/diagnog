@@ -1,9 +1,12 @@
+from pyexpat import model
 from django.db import models
 from user.models import Profile
 
 # Create your models here.
 from datetime import datetime
 from django.db.models import Avg
+from django.utils.translation import gettext_lazy as _
+from .constants import PaymentStatus
 
 
 class Products(models.Model):
@@ -38,19 +41,34 @@ class ProductRating(models.Model):
     rating = models.FloatField(null=True)
     rated_by = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
-
-class Orders(models.Model):
-    ''' Model for Products Order'''
-    methods = (('UPI', 'UPI'), ('NetBanking', 'NetBanking'))
-    name = models.ForeignKey(Products, on_delete=models.CASCADE)
-    order_by = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=1)
-    order_date = models.DateTimeField(auto_now=True)
-    cod = models.BooleanField(default=False)
-    payment_method = models.CharField(
-        max_length=150, blank=True, null=True, choices=methods)
-
 class Cart(models.Model):
     product = models.ForeignKey(Products,on_delete=models.CASCADE)
     added_by = models.ForeignKey(Profile,on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1,blank=False,null=False)
+    status = models.CharField(default="Pending",max_length=50)
+
+class Order(models.Model):
+    name = models.CharField(_("Customer Name"), max_length=254, blank=False, null=False)
+    amount = models.FloatField(_("Amount"), null=False, blank=False)
+    status = models.CharField(
+        _("Payment Status"),
+        default=PaymentStatus.PENDING,
+        max_length=254,
+        blank=False,
+        null=False,
+    )
+    provider_order_id = models.CharField(
+        _("Order ID"), max_length=40, null=False, blank=False
+    )
+    payment_id = models.CharField(
+        _("Payment ID"), max_length=36, null=False, blank=False
+    )
+    signature_id = models.CharField(
+        _("Signature ID"), max_length=128, null=False, blank=False
+    )
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    order_by = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    order_date = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.id}-{self.name}-{self.status}"

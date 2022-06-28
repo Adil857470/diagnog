@@ -42,7 +42,9 @@
         window.onload= cart_data_load ();
       </script>
       <div class="btn">
-        <button type="submit" class="b">Checkout</button>
+        <a href="{% url 'payment_form' %}">
+          <button type="submit" class="b">Checkout</button>
+        </a>
       </div>
       <p>Free Shipping on All Orders Over ₹100!</p>
     </div>

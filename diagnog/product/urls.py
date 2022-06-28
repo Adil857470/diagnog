@@ -10,6 +10,13 @@ urlpatterns = [
     
     #________________________________________________________________________________________
     path('cart_add/<int:id>/<str:qty>', cart_add, name='cart_add'),
+    path('payment_form/', razor_pay_form, name='payment_form'),
+    path('payment/', order_payment, name='payment'),
+    path("payment/callback/", callback, name="callback"),
+    # path('payment/', homepage, name='index'),
+    # path('paymenthandler/', paymenthandler, name='paymenthandler'),
+    
+    
 #     path('cart/item_clear/<int:id>/', item_clear, name='item_clear'),
 #     path('cart/item_increment/<int:id>/',
 #          item_increment, name='item_increment'),
