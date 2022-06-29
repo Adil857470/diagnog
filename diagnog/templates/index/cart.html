@@ -28,11 +28,9 @@
         function cart_data_load(){
             var subTotal = 0;
             {% for data in cart %}
-            console.log('----------------------',{{forloop.counter}})
             var price_of_each = document.getElementById({{forloop.counter}}+"_total").innerText;
             var qty_pric = price_of_each.split('*');
             subTotal = subTotal + (qty_pric[0]*qty_pric[1])
-            console.log(subTotal,"---Pricing",qty_pric);
     
             {% endfor %}
             var sub_total_assignment = document.getElementById("sub_total_value");

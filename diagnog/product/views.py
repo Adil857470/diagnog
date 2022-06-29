@@ -12,9 +12,9 @@ from django.conf import settings
 import json
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponseBadRequest
+message=None
 
-
-def index(request):
+def homePage(user_id):
     data = Products.objects.all()[0:8]
     for dat in data:
         delta = datetime.now().date() - dat.created_at
@@ -28,13 +28,22 @@ def index(request):
     best_selling_product = Cart.objects.all().annotate(
         total_quantity=Avg('quantity')).order_by('-total_quantity')[0:8]
     
-    added_by = Profile.objects.filter(id=request.user.id).first()
+    added_by = Profile.objects.filter(id=user_id).first()
     if added_by:
         cart = Cart.objects.filter(added_by=added_by,status='Pending')
         cart_count = cart.count()
     else:
         cart_count = 0
         cart = None
+    return data,trending_product,best_selling_product,cart_count,cart
+
+def index(request):
+    homepage_data = homePage(user_id = request.user.id)
+    data = homepage_data[0]
+    trending_product = homepage_data[1]
+    best_selling_product = homepage_data[2]
+    cart_count = homepage_data[3]
+    cart = homepage_data[4]
     return render(request, 'index/index.html', {"data": data, "trending_products": trending_product, 'best_selling_products': best_selling_product,'cart_count':cart_count,"cart":cart})
 
 
@@ -122,6 +131,12 @@ def callback(request):
     def verify_signature(response_data):
         client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID,settings.RAZORPAY_KEY_SECRET))
         return client.utility.verify_payment_signature(response_data)
+    homepage_data = homePage(user_id = request.user.id)
+    data = homepage_data[0]
+    trending_product = homepage_data[1]
+    best_selling_product = homepage_data[2]
+    cart_count = homepage_data[3]
+    cart = homepage_data[4]
     if "razorpay_signature" in request.POST:
         payment_id = request.POST.get("razorpay_payment_id", "")
         provider_order_id = request.POST.get("razorpay_order_id", "")
@@ -133,11 +148,15 @@ def callback(request):
         if verify_signature(request.POST):
             order.status = PaymentStatus.SUCCESS
             order.save()
-            return render(request, "index/callback.html", context={"status": order.status})
+            # return redirect('index')
+            # return render(request, "index/callback.html", context={"status": order.status})
+            return render(request, 'index/index.html', {"data": data, "trending_products": trending_product, 'best_selling_products': best_selling_product,'cart_count':cart_count,"cart":cart,"status": "THANKS YOUR PAYMENT HAS BEEN RECEIVED"})
         else:
             order.status = PaymentStatus.FAILURE
             order.save()
-            return render(request, "index/callback.html", context={"status": order.status})
+            # return redirect('index')
+            # return render(request, "index/callback.html", context={"status": order.status})
+            return render(request, 'index/index.html', {"data": data, "trending_products": trending_product, 'best_selling_products': best_selling_product,'cart_count':cart_count,"cart":cart,"status": "SORRY, YOUR PAYMENT HAS BEEN FAILED"})
     else:
         payment_id = json.loads(request.POST.get("error[metadata]")).get("payment_id")
         provider_order_id = json.loads(request.POST.get("error[metadata]")).get(
@@ -147,5 +166,7 @@ def callback(request):
         order.payment_id = payment_id
         order.status = PaymentStatus.FAILURE
         order.save()
-        return render(request, "index/callback.html", context={"status": order.status})
+        # return redirect('index')
+        # return render(request, "index/callback.html", context={"status": order.status})
+        return render(request, 'index/index.html', {"data": data, "trending_products": trending_product, 'best_selling_products': best_selling_product,'cart_count':cart_count,"cart":cart,"status": "SORRY, YOUR PAYMENT HAS BEEN FAILED"})
 
