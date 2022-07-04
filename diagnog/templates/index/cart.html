@@ -7,23 +7,34 @@
         ></span>
       </h5>
       <div class="items example">
+        {% for data in cart %}
         <div class="xl:w-full p-4 cardb">
-            {% for data in cart %}
+          <button class="remove mx-2 text-gray-400" id="cross_{{forloop.counter}}" onclick="remove_item({{forloop.counter}})"><i class="fa-solid fa-xmark"></i></button>
           <div id = "cart_row_{{forloop.counter}}" class="inner-card border border-gray-200 py-2 px-6">
-            <img
+              <img
               src={{data.product.getImage}}
               alt=""
-            />
-            <div class="content">
-              <a href="#">{{data.product.name}}</a>
-              <p>{{data.quantity}} x ₹{{data.product.price}}</p> <span id="{{forloop.counter}}_total" style="display:none;">{{data.quantity}}*{{data.product.price}}</span>
+              />
+              <div class="content">
+                <span name="{{forloop.counter}}_cart_product_id" id="description_product_id" style="display: none"
+                  >{{data.id}}</span
+                >
+                <a href="#">{{data.product.name}}</a>
+                <p><span id="{{forloop.counter}}_cart_quantity">{{data.quantity}}</span> x ₹<span id="{{forloop.counter}}_cart_base_total_price">{{data.product.price}}</p> <span id="{{forloop.counter}}_total" style="display:none;">{{data.quantity}}*{{data.product.price}}</span>
+                <div class="buttons my-2">
+                  <button class="minus border-2 p-1 rounded-md border-gray-100" onclick="minus_product_in_cart('{{forloop.counter}}_cart')"><i class="fa-solid fa-minus"></i></button>
+                  <input type="text" name="{{forloop.counter}}_cart_qty_number" id="{{forloop.counter}}_cart_qty_number" class="num" value={{data.quantity}} readonly>
+                  <button class="plus border-2 p-1 rounded-md border-gray-100" onclick="add_product_in_cart('{{forloop.counter}}_cart')"><i class="fa-solid fa-plus" id="plus"></i></button>
+                  <button class="flex ml-auto items-center a" onclick="add_cart('{{forloop.counter}}_cart')" value={{forloop.counter}}>Add</button>
+                </div>
             </div>
           </div>
-          {%  endfor %}
         </div>
+        {%  endfor %}
+        
         
       </div>
-      <h1>Subtotal <span id="sub_total_value">₹310.00</span></h1>
+      <h1>Subtotal <span id="sub_total_value">₹ 00.00</span></h1>
       <script>
         function cart_data_load(){
             var subTotal = 0;
@@ -38,6 +49,86 @@
 
         }
         window.onload= cart_data_load ();
+
+        function add_cart(page_name) {
+          product_id = document.getElementById(page_name+"_product_id").innerText;
+          current_quantity = document.getElementById(page_name+"_quantity").innerText;
+          
+          var url = "{% url 'cart_add' 0 'qty' %}";
+          // Construct the full URL with "id"
+          let new_url = url.replace("qty", current_quantity);
+          let new_url_with_id = new_url.replace("0", product_id);
+          console.log(new_url_with_id);
+          document.location.href = new_url_with_id ;
+        }
+
+        function add_product_in_cart(page_name) {
+          current_value = document.getElementById(page_name+"_quantity").innerText;
+          current_total = document.getElementById(page_name+"_base_total_price").innerText;
+          
+          const span = document.getElementById(page_name+"_quantity");
+      
+          int_current_value = parseInt(current_value);
+          int_total_price = parseInt(current_total);
+          
+          value = int_current_value + 1;
+          new_total = value * int_total_price;
+          const num = document.getElementById(page_name+"_qty_number");
+          num.value = value;
+          span.textContent = value;
+          new_total = value * int_total_price;
+          
+          var sub_total_assignment = document.getElementById("sub_total_value");
+          var subTotal = sub_total_assignment.innerText;
+          int_subTotal = parseInt(subTotal.split('₹')[1]);
+          console.log(int_subTotal,int_total_price,int_subTotal+int_total_price)
+          sub_total_assignment.textContent = '₹ '+(int_total_price + int_subTotal).toString();
+        }
+      
+        function minus_product_in_cart(page_name) {
+          current_quantity = document.getElementById(page_name+"_quantity").innerText;
+          current_total = document.getElementById(page_name+"_base_total_price").innerText;
+          const span = document.getElementById(page_name+"_quantity");
+          const num = document.getElementById(page_name+"_qty_number");
+          
+          int_current_quantity = parseInt(current_quantity);
+          int_total_price = parseInt(current_total);
+          if (int_current_quantity == 0) {
+            span.textContent = "0";
+            num.value = "0";
+          } else {
+            value = int_current_quantity - 1;
+            span.textContent = value;
+            num.value = value;
+            new_total = value * int_total_price;
+
+
+          }
+          var sub_total_assignment = document.getElementById("sub_total_value");
+          var subTotal = sub_total_assignment.innerText;
+          int_subTotal = parseInt(subTotal.split('₹')[1]);
+          sub_total_assignment.textContent = '₹ '+(int_subTotal-int_total_price).toString();
+        }
+
+        function remove_item(id){
+          const element = document.getElementById('cart_row_'+id.toString());
+          const cross_button = document.getElementById('cross_'+id.toString());
+
+          current_quantity = document.getElementById(id.toString()+"_cart_quantity").innerText;
+          current_total = document.getElementById(id.toString()+"_cart_base_total_price").innerText;
+          
+          int_current_quantity = parseInt(current_quantity);
+          int_total_price = parseInt(current_total);
+
+          var sub_total_assignment = document.getElementById("sub_total_value");
+          var subTotal = sub_total_assignment.innerText;
+          int_subTotal = parseInt(subTotal.split('₹')[1]);
+
+          sub_total_assignment.textContent = '₹ '+(int_subTotal-(int_current_quantity*int_total_price)).toString();
+
+          element.remove();
+          cross_button.remove();
+        }
       </script>
       <div class="btn">
         <a href="{% url 'payment_form' %}">
@@ -47,3 +138,4 @@
       <p>Free Shipping on All Orders Over ₹100!</p>
     </div>
   </div>
+

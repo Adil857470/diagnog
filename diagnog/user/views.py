@@ -60,7 +60,7 @@ def signUp(request):
             to_email = email
 
             msg = EmailMultiAlternatives(
-                mail_subject, message, 'youremail', [to_email])
+                mail_subject, message, to_email, [to_email])
             msg.attach_alternative(message, "text/html")
             msg.send()
             return render(request, 'user/signup.html', {"data": 'Please confirm your email address to complete the registration !'})
@@ -112,7 +112,7 @@ def signIn(request):
 
                 auth.login(request, user)
                 request.session['username'] = email
-                return redirect('userprofile')
+                return redirect('index')
             else:
                 return render(request, 'user/signin.html', {'data': 'Invalid Credentials'})
 

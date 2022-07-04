@@ -59,7 +59,7 @@ def productDescription(request, id=None):
         cart_count = cart.count()
     else:
         cart_count = 0
-    return render(request, 'index/description.html', {"data": data,"cart_count":cart_count})
+    return render(request, 'index/description.html', {"data": data,"cart_count":cart_count,"cart":cart})
 
 
 @login_required(login_url="/user/signin/")
@@ -77,6 +77,8 @@ def cart_add(request, id, qty = 1):
     cart.save()
     return redirect("index")
 
+
+    
 
 #_______________________________PAYMENT_____RAZOR____PAY________________________________
 razorpay_client = razorpay.Client(
