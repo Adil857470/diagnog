@@ -128,6 +128,11 @@
 
           element.remove();
           cross_button.remove();
+          const cart_count_data = document.getElementById("cart_count");
+          if (parseInt(cart_count_data.innerText)>0){
+            cart_count_data.textContent = parseInt(cart_count_data.innerText) - 1 ;
+
+          }
         }
       </script>
       <div class="btn">
