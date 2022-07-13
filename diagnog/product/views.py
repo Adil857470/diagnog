@@ -1,4 +1,5 @@
 from audioop import add
+from telnetlib import STATUS
 from django.shortcuts import render, redirect
 from .models import *
 from django.db.models import F
@@ -11,10 +12,10 @@ import razorpay
 from django.conf import settings
 import json
 from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponseBadRequest
+from django.http import *
 message=None
 
-def homePage(user_id):
+def homePage(user):
     data = Products.objects.all()[0:8]
     for dat in data:
         delta = datetime.now().date() - dat.created_at
@@ -28,7 +29,7 @@ def homePage(user_id):
     best_selling_product = Cart.objects.all().annotate(
         total_quantity=Avg('quantity')).order_by('-total_quantity')[0:8]
     
-    added_by = Profile.objects.filter(id=user_id).first()
+    added_by = Profile.objects.filter(user=user).first()
     if added_by:
         cart = Cart.objects.filter(added_by=added_by,status='Pending')
         cart_count = cart.count()
@@ -38,7 +39,7 @@ def homePage(user_id):
     return data,trending_product,best_selling_product,cart_count,cart
 
 def index(request):
-    homepage_data = homePage(user_id = request.user.id)
+    homepage_data = homePage(user = request.user)
     data = homepage_data[0]
     trending_product = homepage_data[1]
     best_selling_product = homepage_data[2]
@@ -53,7 +54,7 @@ def productDescription(request, id=None):
     image_url = 'https://diagnog-media.s3.us-east-1.amazonaws.com/' + \
         str(image.image)
     data.image = image_url
-    added_by = Profile.objects.filter(id=request.user.id).first()
+    added_by = Profile.objects.filter(user=request.user).first()
     if added_by:
         cart = Cart.objects.filter(added_by=added_by,status='Pending')
         cart_count = cart.count()
@@ -65,7 +66,7 @@ def productDescription(request, id=None):
 @login_required(login_url="/user/signin/")
 def cart_add(request, id, qty = 1):
     product = Products.objects.get(id=id)
-    added_by = Profile.objects.filter(id=request.user.id).first()
+    added_by = Profile.objects.filter(user=request.user).first()
     cart = Cart.objects.filter(product=product,added_by=added_by)
     if cart.exists():
         cart = cart.first()
@@ -77,7 +78,12 @@ def cart_add(request, id, qty = 1):
     cart.save()
     return redirect("index")
 
-
+@login_required(login_url="/user/signin/")
+def remove_cart(request,id):
+    added_by = Profile.objects.filter(user=request.user).first()
+    Cart.objects.filter(id=id,added_by=added_by).delete()
+    return JsonResponse({'status': 'ok'})
+    
     
 
 #_______________________________PAYMENT_____RAZOR____PAY________________________________
@@ -85,7 +91,7 @@ razorpay_client = razorpay.Client(
     auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 
 def razor_pay_form(request):
-    added_by = Profile.objects.filter(id=request.user.id).first()
+    added_by = Profile.objects.filter(user=request.user).first()
     if added_by:
         carts = Cart.objects.filter(added_by=added_by,status='Pending')
         total = 0
@@ -101,19 +107,18 @@ def order_payment(request):
     if request.method == "POST":
         name = request.POST.get("name")
         amount = request.POST.get("amount")
-        # client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
         razorpay_order = razorpay_client.order.create(
             {"amount": float(amount) * 100, "currency": "INR", "payment_capture": "1"}
         )
         order_id = '#'
         order_id = order_id + str(request.user.id) + str(datetime.now().strftime("%Y%m%d%H%M%S"))
-        added_by = Profile.objects.filter(id=request.user.id).first()
+        added_by = Profile.objects.filter(user=request.user).first()
         cart = Cart.objects.filter(added_by=added_by,status='Pending')
         order = Order.objects.create(
             name=name, amount=amount, provider_order_id=razorpay_order['id'],cart=cart.first(),payment_id=razorpay_order['id'],order_by=added_by
         )
         order.save()
-        # cart.update(status='Purchased')
+        # cart.update(status='Purchased') # for testing purpose on production uncomment this line 
         context = {}
         context['razorpay_order_id'] = razorpay_order['id']
         context['razorpay_key'] = settings.RAZORPAY_KEY_ID
@@ -133,7 +138,7 @@ def callback(request):
     def verify_signature(response_data):
         client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID,settings.RAZORPAY_KEY_SECRET))
         return client.utility.verify_payment_signature(response_data)
-    homepage_data = homePage(user_id = request.user.id)
+    homepage_data = homePage(user = request.user)
     data = homepage_data[0]
     trending_product = homepage_data[1]
     best_selling_product = homepage_data[2]
@@ -150,14 +155,10 @@ def callback(request):
         if verify_signature(request.POST):
             order.status = PaymentStatus.SUCCESS
             order.save()
-            # return redirect('index')
-            # return render(request, "index/callback.html", context={"status": order.status})
             return render(request, 'index/index.html', {"data": data, "trending_products": trending_product, 'best_selling_products': best_selling_product,'cart_count':cart_count,"cart":cart,"status": "THANKS YOUR PAYMENT HAS BEEN RECEIVED"})
         else:
             order.status = PaymentStatus.FAILURE
             order.save()
-            # return redirect('index')
-            # return render(request, "index/callback.html", context={"status": order.status})
             return render(request, 'index/index.html', {"data": data, "trending_products": trending_product, 'best_selling_products': best_selling_product,'cart_count':cart_count,"cart":cart,"status": "SORRY, YOUR PAYMENT HAS BEEN FAILED"})
     else:
         payment_id = json.loads(request.POST.get("error[metadata]")).get("payment_id")
@@ -168,7 +169,5 @@ def callback(request):
         order.payment_id = payment_id
         order.status = PaymentStatus.FAILURE
         order.save()
-        # return redirect('index')
-        # return render(request, "index/callback.html", context={"status": order.status})
         return render(request, 'index/index.html', {"data": data, "trending_products": trending_product, 'best_selling_products': best_selling_product,'cart_count':cart_count,"cart":cart,"status": "SORRY, YOUR PAYMENT HAS BEEN FAILED"})
 

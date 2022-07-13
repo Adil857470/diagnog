@@ -16,7 +16,7 @@
               alt=""
               />
               <div class="content">
-                <span name="{{forloop.counter}}_cart_product_id" id="description_product_id" style="display: none"
+                <span name="{{forloop.counter}}_cart_product_id" id="{{forloop.counter}}_cart_product_id" style="display: none"
                   >{{data.id}}</span
                 >
                 <a href="#">{{data.product.name}}</a>
@@ -58,7 +58,6 @@
           // Construct the full URL with "id"
           let new_url = url.replace("qty", current_quantity);
           let new_url_with_id = new_url.replace("0", product_id);
-          console.log(new_url_with_id);
           document.location.href = new_url_with_id ;
         }
 
@@ -126,6 +125,10 @@
 
           sub_total_assignment.textContent = '₹ '+(int_subTotal-(int_current_quantity*int_total_price)).toString();
 
+          console.log(id.toString()+"_cart_product_id");
+          var cart_item= document.getElementById(id.toString()+"_cart_product_id");
+          var cart_item_id = cart_item.innerText;
+
           element.remove();
           cross_button.remove();
           const cart_count_data = document.getElementById("cart_count");
@@ -133,7 +136,25 @@
             cart_count_data.textContent = parseInt(cart_count_data.innerText) - 1 ;
 
           }
-        }
+          
+          var url = "{% url 'remove_cart' 0 %}";
+          // Construct the full URL with "id"
+          let new_url = url.replace("0", cart_item_id);
+          $.ajax({
+            data: $(this).serialize(), // get the form data
+            url: new_url,
+            // on success
+            success: function (response) {
+                console.log("Ho gaya chacha!",response);
+
+            },
+            // on error
+            error: function (response) {
+                // alert the error if any error occured
+                console.log(response.responseJSON.errors)
+            }
+        });
+      }
       </script>
       <div class="btn">
         <a href="{% url 'payment_form' %}">
