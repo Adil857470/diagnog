@@ -28,8 +28,10 @@ def homePage(user):
         avg_rating=Avg('rating')).filter(avg_rating__gte=3.5)[0:4]
     best_selling_product = Cart.objects.all().annotate(
         total_quantity=Avg('quantity')).order_by('-total_quantity')[0:8]
-    
-    added_by = Profile.objects.filter(user=user).first()
+    added_by = False
+    if user.id !=None:
+        added_by = Profile.objects.filter(user=user).first()
+        
     if added_by:
         cart = Cart.objects.filter(added_by=added_by,status='Pending')
         cart_count = cart.count()
@@ -60,6 +62,7 @@ def productDescription(request, id=None):
         cart_count = cart.count()
     else:
         cart_count = 0
+        cart = None
     return render(request, 'index/description.html', {"data": data,"cart_count":cart_count,"cart":cart})
 
 
