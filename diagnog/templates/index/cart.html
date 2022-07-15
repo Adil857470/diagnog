@@ -157,9 +157,13 @@
       }
       </script>
       <div class="btn">
+        {% if cart %}
         <a href="{% url 'payment_form' %}">
           <button type="submit" class="b">Checkout</button>
         </a>
+        {% else %}
+        <span>First add product to cart</span>
+        {% endif %}
       </div>
       <p>Free Shipping on All Orders Over ₹100!</p>
     </div>

@@ -56,7 +56,9 @@ def productDescription(request, id=None):
     image_url = 'https://diagnog-media.s3.us-east-1.amazonaws.com/' + \
         str(image.image)
     data.image = image_url
-    added_by = Profile.objects.filter(user=request.user).first()
+    added_by = False
+    if request.user.id !=None:
+        added_by = Profile.objects.filter(user=request.user).first()
     if added_by:
         cart = Cart.objects.filter(added_by=added_by,status='Pending')
         cart_count = cart.count()
@@ -69,7 +71,9 @@ def productDescription(request, id=None):
 @login_required(login_url="/user/signin/")
 def cart_add(request, id, qty = 1):
     product = Products.objects.get(id=id)
-    added_by = Profile.objects.filter(user=request.user).first()
+    added_by = False
+    if request.user.id !=None:
+        added_by = Profile.objects.filter(user=request.user).first()
     cart = Cart.objects.filter(product=product,added_by=added_by)
     if cart.exists():
         cart = cart.first()
@@ -83,7 +87,9 @@ def cart_add(request, id, qty = 1):
 
 @login_required(login_url="/user/signin/")
 def remove_cart(request,id):
-    added_by = Profile.objects.filter(user=request.user).first()
+    added_by = False
+    if request.user.id !=None:
+        added_by = Profile.objects.filter(user=request.user).first()
     Cart.objects.filter(id=id,added_by=added_by).delete()
     return JsonResponse({'status': 'ok'})
     
@@ -94,7 +100,9 @@ razorpay_client = razorpay.Client(
     auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 
 def razor_pay_form(request):
-    added_by = Profile.objects.filter(user=request.user).first()
+    added_by = False
+    if request.user.id !=None:
+        added_by = Profile.objects.filter(user=request.user).first()
     if added_by:
         carts = Cart.objects.filter(added_by=added_by,status='Pending')
         total = 0
@@ -105,7 +113,7 @@ def razor_pay_form(request):
         data = {"message":"Please add somehting to cart!"}
     return render(request,'index/razor_pay.html', data)
     
-    
+@login_required(login_url="/user/signin/")
 def order_payment(request):
     if request.method == "POST":
         name = request.POST.get("name")
