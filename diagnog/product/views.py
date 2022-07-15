@@ -13,6 +13,7 @@ from django.conf import settings
 import json
 from django.views.decorators.csrf import csrf_exempt
 from django.http import *
+from django.contrib.auth.models import User
 message=None
 
 def homePage(user):
@@ -30,6 +31,7 @@ def homePage(user):
         total_quantity=Avg('quantity')).order_by('-total_quantity')[0:8]
     added_by = False
     if user.id !=None:
+        user = User.objects.filter(id=user.id).first()
         added_by = Profile.objects.filter(user=user).first()
         
     if added_by:
@@ -58,7 +60,8 @@ def productDescription(request, id=None):
     data.image = image_url
     added_by = False
     if request.user.id !=None:
-        added_by = Profile.objects.filter(user=request.user).first()
+        user = User.objects.filter(id=request.user.id).first()
+        added_by = Profile.objects.filter(user=user).first()
     if added_by:
         cart = Cart.objects.filter(added_by=added_by,status='Pending')
         cart_count = cart.count()
@@ -73,7 +76,11 @@ def cart_add(request, id, qty = 1):
     product = Products.objects.get(id=id)
     added_by = False
     if request.user.id !=None:
-        added_by = Profile.objects.filter(user=request.user).first()
+        user = User.objects.filter(id=request.user.id).first()
+        print(user)
+        added_by = Profile.objects.filter(user=user).first()
+        print("_____________________________IF_____________________________",added_by)
+    print(added_by,'-------------------------',request.user.id)
     cart = Cart.objects.filter(product=product,added_by=added_by)
     if cart.exists():
         cart = cart.first()
@@ -89,7 +96,8 @@ def cart_add(request, id, qty = 1):
 def remove_cart(request,id):
     added_by = False
     if request.user.id !=None:
-        added_by = Profile.objects.filter(user=request.user).first()
+        user = User.objects.filter(id=request.user.id).first()
+        added_by = Profile.objects.filter(user=user).first()
     Cart.objects.filter(id=id,added_by=added_by).delete()
     return JsonResponse({'status': 'ok'})
     
@@ -102,7 +110,8 @@ razorpay_client = razorpay.Client(
 def razor_pay_form(request):
     added_by = False
     if request.user.id !=None:
-        added_by = Profile.objects.filter(user=request.user).first()
+        user = User.objects.filter(id=request.user.id).first()
+        added_by = Profile.objects.filter(user=user).first()
     if added_by:
         carts = Cart.objects.filter(added_by=added_by,status='Pending')
         total = 0
@@ -123,7 +132,8 @@ def order_payment(request):
         )
         order_id = '#'
         order_id = order_id + str(request.user.id) + str(datetime.now().strftime("%Y%m%d%H%M%S"))
-        added_by = Profile.objects.filter(user=request.user).first()
+        user = User.objects.filter(id=request.user.id).first()
+        added_by = Profile.objects.filter(user=user).first()
         cart = Cart.objects.filter(added_by=added_by,status='Pending')
         order = Order.objects.create(
             name=name, amount=amount, provider_order_id=razorpay_order['id'],cart=cart.first(),payment_id=razorpay_order['id'],order_by=added_by
